@@ -1,0 +1,27 @@
+{
+  "name": "@demo-new-feature/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@demo-new-feature/auth": "workspace:*",
+    "@demo-new-feature/db": "workspace:*",
+    "@demo-new-feature/env": "workspace:*",
+    "@prisma/client": "catalog:",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@demo-new-feature/config": "workspace:*",
+    "typescript": "^5"
+  }
+}
