@@ -23,7 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@demo-new-feature/ui/*": ["../../packages/ui/src/*"]
+      "@sonvox /ui/*": ["../../packages/ui/src/*"]
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@demo-new-feature/auth",
+  "name": "@sonvox /auth",
   "type": "module",
   "exports": {
     ".": {
@@ -11,8 +11,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@demo-new-feature/db": "workspace:*",
-    "@demo-new-feature/env": "workspace:*",
+    "@sonvox /db": "workspace:*",
+    "@sonvox /env": "workspace:*",
     "@polar-sh/better-auth": "catalog:",
     "@polar-sh/sdk": "^0.42.2",
     "better-auth": "catalog:",
@@ -20,7 +20,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@demo-new-feature/config": "workspace:*",
+    "@sonvox /config": "workspace:*",
     "typescript": "^5"
   }
 }

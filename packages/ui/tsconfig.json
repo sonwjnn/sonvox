@@ -1,11 +1,11 @@
 {
-  "extends": "@demo-new-feature/config/tsconfig.base.json",
+  "extends": "@sonvox /config/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
-      "@demo-new-feature/ui/*": ["./src/*"]
+      "@sonvox /ui/*": ["./src/*"]
     },
     "strictNullChecks": true
   },

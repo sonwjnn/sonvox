@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@demo-new-feature/ui/components",
-    "utils": "@demo-new-feature/ui/lib/utils",
-    "hooks": "@demo-new-feature/ui/hooks",
-    "lib": "@demo-new-feature/ui/lib",
-    "ui": "@demo-new-feature/ui/components"
+    "components": "@sonvox /ui/components",
+    "utils": "@sonvox /ui/lib/utils",
+    "hooks": "@sonvox /ui/hooks",
+    "lib": "@sonvox /ui/lib",
+    "ui": "@sonvox /ui/components"
   },
   "menuColor": "default",
   "menuAccent": "subtle",

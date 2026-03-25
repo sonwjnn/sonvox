@@ -13,7 +13,7 @@
   "$schema": "https://r2.better-t-stack.dev/schema.json",
   "version": "3.26.0",
   "createdAt": "2026-03-20T04:46:28.538Z",
-  "reproducibleCommand": "bun create better-t-stack@latest demo-new-feature --frontend tanstack-start --backend self --runtime none --database postgres --orm prisma --api trpc --auth better-auth --payments polar --addons turborepo biome ultracite --examples todo --db-setup prisma-postgres --web-deploy cloudflare --server-deploy none --git --package-manager bun --install",
+  "reproducibleCommand": "bun create better-t-stack@latest sonvox  --frontend tanstack-start --backend self --runtime none --database postgres --orm prisma --api trpc --auth better-auth --payments polar --addons turborepo biome ultracite --examples todo --db-setup prisma-postgres --web-deploy cloudflare --server-deploy none --git --package-manager bun --install",
   "database": "postgres",
   "orm": "prisma",
   "backend": "self",

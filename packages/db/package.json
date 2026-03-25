@@ -1,5 +1,5 @@
 {
-  "name": "@demo-new-feature/db",
+  "name": "@sonvox /db",
   "type": "module",
   "exports": {
     ".": {
@@ -17,7 +17,7 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-    "@demo-new-feature/env": "workspace:*",
+    "@sonvox /env": "workspace:*",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "catalog:",
     "dotenv": "catalog:",
@@ -25,7 +25,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@demo-new-feature/config": "workspace:*",
+    "@sonvox /config": "workspace:*",
     "@types/pg": "^8.16.0",
     "prisma": "^7.2.0",
     "typescript": "^5"

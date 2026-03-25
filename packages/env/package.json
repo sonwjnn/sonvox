@@ -1,5 +1,5 @@
 {
-  "name": "@demo-new-feature/env",
+  "name": "@sonvox /env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,8 +13,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@demo-new-feature/config": "workspace:*",
-    "@demo-new-feature/infra": "workspace:*",
+    "@sonvox /config": "workspace:*",
+    "@sonvox /infra": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "^5"
   }
