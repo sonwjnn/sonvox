@@ -1,4 +1,4 @@
-# sonvox 
+# sonvox
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Start, Self, TRPC, and more.
 
@@ -63,7 +63,7 @@ npx shadcn@latest add accordion dialog popover sheet table -c packages/ui
 Import shared components like this:
 
 ```tsx
-import { Button } from "@sonvox /ui/components/button";
+import { Button } from "@sonvox/ui/components/button";
 ```
 
 ### Add app-specific blocks
@@ -85,7 +85,7 @@ For more details, see the guide on [Deploying to Cloudflare with Alchemy](https:
 ## Project Structure
 
 ```
-sonvox /
+sonvox/
 ├── apps/
 │   └── web/         # Fullstack application (React + TanStack Start)
 ├── packages/

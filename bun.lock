@@ -2,16 +2,16 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "sonvox ",
+      "name": "sonvox",
       "dependencies": {
-        "@sonvox /env": "workspace:*",
+        "@sonvox/env": "workspace:*",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.7",
         "@cloudflare/workers-types": "^4.20251213.0",
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "@types/node": "catalog:",
         "turbo": "^2.8.12",
         "typescript": "^5",
@@ -23,10 +23,10 @@
       "dependencies": {
         "@polar-sh/better-auth": "catalog:",
         "@prisma/client": "catalog:",
-        "@sonvox /api": "workspace:*",
-        "@sonvox /auth": "workspace:*",
-        "@sonvox /env": "workspace:*",
-        "@sonvox /ui": "workspace:*",
+        "@sonvox/api": "workspace:*",
+        "@sonvox/auth": "workspace:*",
+        "@sonvox/env": "workspace:*",
+        "@sonvox/ui": "workspace:*",
         "@tailwindcss/vite": "^4.1.18",
         "@tanstack/react-form": "^1.28.0",
         "@tanstack/react-query": "^5.80.6",
@@ -50,7 +50,7 @@
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.17.1",
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "@tanstack/react-query-devtools": "^5.91.1",
         "@tanstack/react-router-devtools": "^1.141.1",
         "@testing-library/dom": "^10.4.0",
@@ -67,61 +67,61 @@
       },
     },
     "packages/api": {
-      "name": "@sonvox /api",
+      "name": "@sonvox/api",
       "dependencies": {
         "@prisma/client": "catalog:",
-        "@sonvox /auth": "workspace:*",
-        "@sonvox /db": "workspace:*",
-        "@sonvox /env": "workspace:*",
+        "@sonvox/auth": "workspace:*",
+        "@sonvox/db": "workspace:*",
+        "@sonvox/env": "workspace:*",
         "@trpc/client": "catalog:",
         "@trpc/server": "catalog:",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "typescript": "^5",
       },
     },
     "packages/auth": {
-      "name": "@sonvox /auth",
+      "name": "@sonvox/auth",
       "dependencies": {
         "@polar-sh/better-auth": "catalog:",
         "@polar-sh/sdk": "^0.42.2",
-        "@sonvox /db": "workspace:*",
-        "@sonvox /env": "workspace:*",
+        "@sonvox/db": "workspace:*",
+        "@sonvox/env": "workspace:*",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "typescript": "^5",
       },
     },
     "packages/config": {
-      "name": "@sonvox /config",
+      "name": "@sonvox/config",
       "version": "0.0.0",
     },
     "packages/db": {
-      "name": "@sonvox /db",
+      "name": "@sonvox/db",
       "dependencies": {
         "@prisma/adapter-pg": "^7.2.0",
         "@prisma/client": "catalog:",
-        "@sonvox /env": "workspace:*",
+        "@sonvox/env": "workspace:*",
         "dotenv": "catalog:",
         "pg": "^8.17.1",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "@types/pg": "^8.16.0",
         "prisma": "^7.2.0",
         "typescript": "^5",
       },
     },
     "packages/env": {
-      "name": "@sonvox /env",
+      "name": "@sonvox/env",
       "version": "0.0.0",
       "dependencies": {
         "@t3-oss/env-core": "^0.13.1",
@@ -129,26 +129,26 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
-        "@sonvox /infra": "workspace:*",
+        "@sonvox/config": "workspace:*",
+        "@sonvox/infra": "workspace:*",
         "@types/node": "catalog:",
         "typescript": "^5",
       },
     },
     "packages/infra": {
-      "name": "@sonvox /infra",
+      "name": "@sonvox/infra",
       "dependencies": {
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "alchemy": "catalog:",
         "typescript": "^5",
       },
     },
     "packages/ui": {
-      "name": "@sonvox /ui",
+      "name": "@sonvox/ui",
       "version": "0.0.0",
       "dependencies": {
         "@base-ui/react": "^1.0.0",
@@ -164,7 +164,7 @@
         "tw-animate-css": "^1.3.4",
       },
       "devDependencies": {
-        "@sonvox /config": "workspace:*",
+        "@sonvox/config": "workspace:*",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "tailwindcss": "catalog:",
@@ -880,19 +880,19 @@
 
     "@smithy/uuid": ["@smithy/uuid@1.1.2", "", { "dependencies": { "tslib": "^2.6.2" } }, "sha512-O/IEdcCUKkubz60tFbGA7ceITTAJsty+lBjNoorP4Z6XRqaFb/OjQjZODophEcuq68nKm6/0r+6/lLQ+XVpk8g=="],
 
-    "@sonvox /api": ["@sonvox /api@workspace:packages/api"],
+    "@sonvox/api": ["@sonvox/api@workspace:packages/api"],
 
-    "@sonvox /auth": ["@sonvox /auth@workspace:packages/auth"],
+    "@sonvox/auth": ["@sonvox/auth@workspace:packages/auth"],
 
-    "@sonvox /config": ["@sonvox /config@workspace:packages/config"],
+    "@sonvox/config": ["@sonvox/config@workspace:packages/config"],
 
-    "@sonvox /db": ["@sonvox /db@workspace:packages/db"],
+    "@sonvox/db": ["@sonvox/db@workspace:packages/db"],
 
-    "@sonvox /env": ["@sonvox /env@workspace:packages/env"],
+    "@sonvox/env": ["@sonvox/env@workspace:packages/env"],
 
-    "@sonvox /infra": ["@sonvox /infra@workspace:packages/infra"],
+    "@sonvox/infra": ["@sonvox/infra@workspace:packages/infra"],
 
-    "@sonvox /ui": ["@sonvox /ui@workspace:packages/ui"],
+    "@sonvox/ui": ["@sonvox/ui@workspace:packages/ui"],
 
     "@speed-highlight/core": ["@speed-highlight/core@1.2.15", "", {}, "sha512-BMq1K3DsElxDWawkX6eLg9+CKJrTVGCBAWVuHXVUV2u0s2711qiChLSId6ikYPfxhdYocLNt3wWwSvDiTvFabw=="],
 
@@ -2193,10 +2193,6 @@
     "@jridgewell/gen-mapping/@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
     "@jridgewell/remapping/@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
-
-    "@modelcontextprotocol/sdk/@hono/node-server": ["@hono/node-server@1.19.11", "", { "peerDependencies": { "hono": "^4" } }, "sha512-dr8/3zEaB+p0D2n/IUrlPF1HZm586qgJNXK1a9fhg/PzdtkK7Ksd5l312tJX2yBuALqDYBlG20QEbayqPyxn+g=="],
-
-    "@modelcontextprotocol/sdk/hono": ["hono@4.12.9", "", {}, "sha512-wy3T8Zm2bsEvxKZM5w21VdHDDcwVS1yUFFY6i8UobSsKfFceT7TOwhbhfKsDyx7tYQlmRM5FLpIuYvNFyjctiA=="],
 
     "@noble/curves/@noble/hashes": ["@noble/hashes@1.8.0", "", {}, "sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A=="],
 

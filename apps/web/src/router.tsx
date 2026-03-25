@@ -1,4 +1,4 @@
-import type { AppRouter } from "@demo-new-feature/api/routers/index";
+import type { AppRouter } from "@sonvox/api/routers/index";
 import {
 	QueryCache,
 	QueryClient,

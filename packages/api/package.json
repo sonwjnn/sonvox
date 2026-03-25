@@ -1,5 +1,5 @@
 {
-  "name": "@sonvox /api",
+  "name": "@sonvox/api",
   "type": "module",
   "exports": {
     ".": {
@@ -11,9 +11,9 @@
   },
   "scripts": {},
   "dependencies": {
-    "@sonvox /auth": "workspace:*",
-    "@sonvox /db": "workspace:*",
-    "@sonvox /env": "workspace:*",
+    "@sonvox/auth": "workspace:*",
+    "@sonvox/db": "workspace:*",
+    "@sonvox/env": "workspace:*",
     "@prisma/client": "catalog:",
     "@trpc/client": "catalog:",
     "@trpc/server": "catalog:",
@@ -21,7 +21,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@sonvox /config": "workspace:*",
+    "@sonvox/config": "workspace:*",
     "typescript": "^5"
   }
 }

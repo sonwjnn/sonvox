@@ -1,5 +1,5 @@
 {
-  "name": "@sonvox /infra",
+  "name": "@sonvox/infra",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@sonvox /config": "workspace:*",
+    "@sonvox/config": "workspace:*",
     "alchemy": "catalog:",
     "typescript": "^5"
   }

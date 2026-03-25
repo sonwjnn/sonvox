@@ -13,8 +13,8 @@
   "iconLibrary": "lucide",
   "aliases": {
     "components": "@/components",
-    "utils": "@sonvox /ui/lib/utils",
-    "ui": "@sonvox /ui/components",
+    "utils": "@sonvox/ui/lib/utils",
+    "ui": "@sonvox/ui/components",
     "lib": "@/lib",
     "hooks": "@/hooks"
   },

@@ -8,10 +8,10 @@
     "dev:bare": "vite dev"
   },
   "dependencies": {
-    "@sonvox /api": "workspace:*",
-    "@sonvox /auth": "workspace:*",
-    "@sonvox /env": "workspace:*",
-    "@sonvox /ui": "workspace:*",
+    "@sonvox/api": "workspace:*",
+    "@sonvox/auth": "workspace:*",
+    "@sonvox/env": "workspace:*",
+    "@sonvox/ui": "workspace:*",
     "@polar-sh/better-auth": "catalog:",
     "@prisma/client": "catalog:",
     "@tailwindcss/vite": "^4.1.18",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.17.1",
-    "@sonvox /config": "workspace:*",
+    "@sonvox/config": "workspace:*",
     "@tanstack/react-query-devtools": "^5.91.1",
     "@tanstack/react-router-devtools": "^1.141.1",
     "@testing-library/dom": "^10.4.0",
