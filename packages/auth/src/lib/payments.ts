@@ -1,7 +1,7 @@
-import { env } from "@demo-new-feature/env/server";
 import { Polar } from "@polar-sh/sdk";
+import { env } from "@sonvox/env/server";
 
 export const polarClient = new Polar({
-  accessToken: env.POLAR_ACCESS_TOKEN,
-  server: "sandbox",
+	accessToken: env.POLAR_ACCESS_TOKEN,
+	server: "sandbox",
 });

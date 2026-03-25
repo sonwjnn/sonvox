@@ -1,15 +1,15 @@
-import { auth } from "@demo-new-feature/auth";
+import { auth } from "@sonvox/auth";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/api/auth/$")({
-  server: {
-    handlers: {
-      GET: ({ request }) => {
-        return auth.handler(request);
-      },
-      POST: ({ request }) => {
-        return auth.handler(request);
-      },
-    },
-  },
+	server: {
+		handlers: {
+			GET: ({ request }) => {
+				return auth.handler(request);
+			},
+			POST: ({ request }) => {
+				return auth.handler(request);
+			},
+		},
+	},
 });
