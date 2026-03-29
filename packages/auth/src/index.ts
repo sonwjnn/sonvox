@@ -3,6 +3,7 @@ import prisma from "@sonvox/db";
 import { env } from "@sonvox/env/server";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import { organization } from "better-auth/plugins";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
 
 import { polarClient } from "./lib/payments";
@@ -19,6 +20,12 @@ export const auth = betterAuth({
 	secret: env.BETTER_AUTH_SECRET,
 	baseURL: env.BETTER_AUTH_URL,
 	plugins: [
+		organization({
+			allowUserToCreateOrganization: true,
+			organizationLimit: 5,
+			creatorRole: "owner",
+			membershipLimit: 100,
+		}),
 		polar({
 			client: polarClient,
 			createCustomerOnSignUp: true,
@@ -31,7 +38,8 @@ export const auth = betterAuth({
 							slug: "pro",
 						},
 					],
-					successUrl: env.POLAR_SUCCESS_URL,
+					// successUrl: env.POLAR_SUCCESS_URL,
+					successUrl: "http://localhost:3001/success?checkout_id={CHECKOUT_ID}",
 					authenticatedUsersOnly: true,
 				}),
 				portal(),

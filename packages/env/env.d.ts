@@ -10,7 +10,9 @@ declare global {
 }
 
 declare module "cloudflare:workers" {
+	// biome-ignore lint/style/noNamespace: <>
 	namespace Cloudflare {
 		export interface Env extends CloudflareEnv {}
 	}
+	export const env: CloudflareEnv;
 }

@@ -14,10 +14,10 @@ import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import Header from "../components/header";
 
 import appCss from "../index.css?url";
-export interface RouterAppContext {
+export type RouterAppContext = {
 	queryClient: QueryClient;
 	trpc: TRPCOptionsProxy<AppRouter>;
-}
+};
 
 export const Route = createRootRouteWithContext<RouterAppContext>()({
 	head: () => ({
@@ -30,7 +30,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "My App",
+				title: "Sonvox",
 			},
 		],
 		links: [

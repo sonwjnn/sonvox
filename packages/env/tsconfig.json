@@ -2,5 +2,6 @@
   "extends": "@sonvox/config/tsconfig.base.json",
   "compilerOptions": {
     "strictNullChecks": true
-  }
+  },
+  "include": ["src/**/*.ts", "env.d.ts"]
 }

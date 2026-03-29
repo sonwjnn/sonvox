@@ -10,3 +10,7 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter });
 
 export default prisma;
+
+// Re-export enums and types for use in other packages
+// biome-ignore lint/performance/noBarrelFile: <>
+export * from "../prisma/generated/enums";

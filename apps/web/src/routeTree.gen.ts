@@ -9,19 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TodosRouteImport } from './routes/todos'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as DashboardVoicesRouteRouteImport } from './routes/dashboard/voices/route'
+import { Route as DashboardTextToSpeechRouteRouteImport } from './routes/dashboard/text-to-speech/route'
+import { Route as DashboardVoicesIndexRouteImport } from './routes/dashboard/voices/index'
+import { Route as DashboardTextToSpeechIndexRouteImport } from './routes/dashboard/text-to-speech/index'
+import { Route as DashboardTextToSpeechGenerationIdRouteImport } from './routes/dashboard/text-to-speech/$generationId'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api/trpc/$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
-const TodosRoute = TodosRouteImport.update({
-  id: '/todos',
-  path: '/todos',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SuccessRoute = SuccessRouteImport.update({
   id: '/success',
   path: '/success',
@@ -37,11 +36,39 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardVoicesRouteRoute = DashboardVoicesRouteRouteImport.update({
+  id: '/voices',
+  path: '/voices',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTextToSpeechRouteRoute =
+  DashboardTextToSpeechRouteRouteImport.update({
+    id: '/text-to-speech',
+    path: '/text-to-speech',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardVoicesIndexRoute = DashboardVoicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardVoicesRouteRoute,
+} as any)
+const DashboardTextToSpeechIndexRoute =
+  DashboardTextToSpeechIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardTextToSpeechRouteRoute,
+  } as any)
+const DashboardTextToSpeechGenerationIdRoute =
+  DashboardTextToSpeechGenerationIdRouteImport.update({
+    id: '/$generationId',
+    path: '/$generationId',
+    getParentRoute: () => DashboardTextToSpeechRouteRoute,
+  } as any)
 const ApiTrpcSplatRoute = ApiTrpcSplatRouteImport.update({
   id: '/api/trpc/$',
   path: '/api/trpc/$',
@@ -54,82 +81,91 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/success': typeof SuccessRoute
-  '/todos': typeof TodosRoute
+  '/dashboard/text-to-speech': typeof DashboardTextToSpeechRouteRouteWithChildren
+  '/dashboard/voices': typeof DashboardVoicesRouteRouteWithChildren
+  '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/dashboard/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
+  '/dashboard/voices/': typeof DashboardVoicesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/success': typeof SuccessRoute
-  '/todos': typeof TodosRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/dashboard/text-to-speech': typeof DashboardTextToSpeechIndexRoute
+  '/dashboard/voices': typeof DashboardVoicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/success': typeof SuccessRoute
-  '/todos': typeof TodosRoute
+  '/dashboard/text-to-speech': typeof DashboardTextToSpeechRouteRouteWithChildren
+  '/dashboard/voices': typeof DashboardVoicesRouteRouteWithChildren
+  '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/dashboard/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
+  '/dashboard/voices/': typeof DashboardVoicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/dashboard'
     | '/login'
     | '/success'
-    | '/todos'
+    | '/dashboard/text-to-speech'
+    | '/dashboard/voices'
+    | '/dashboard/'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/text-to-speech/$generationId'
+    | '/dashboard/text-to-speech/'
+    | '/dashboard/voices/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/dashboard'
     | '/login'
     | '/success'
-    | '/todos'
+    | '/dashboard'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/text-to-speech/$generationId'
+    | '/dashboard/text-to-speech'
+    | '/dashboard/voices'
   id:
     | '__root__'
-    | '/'
     | '/dashboard'
     | '/login'
     | '/success'
-    | '/todos'
+    | '/dashboard/text-to-speech'
+    | '/dashboard/voices'
+    | '/dashboard/'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/text-to-speech/$generationId'
+    | '/dashboard/text-to-speech/'
+    | '/dashboard/voices/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   LoginRoute: typeof LoginRoute
   SuccessRoute: typeof SuccessRoute
-  TodosRoute: typeof TodosRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/todos': {
-      id: '/todos'
-      path: '/todos'
-      fullPath: '/todos'
-      preLoaderRoute: typeof TodosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/success': {
       id: '/success'
       path: '/success'
@@ -151,12 +187,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/dashboard/': {
+      id: '/dashboard/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/voices': {
+      id: '/dashboard/voices'
+      path: '/voices'
+      fullPath: '/dashboard/voices'
+      preLoaderRoute: typeof DashboardVoicesRouteRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/text-to-speech': {
+      id: '/dashboard/text-to-speech'
+      path: '/text-to-speech'
+      fullPath: '/dashboard/text-to-speech'
+      preLoaderRoute: typeof DashboardTextToSpeechRouteRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/voices/': {
+      id: '/dashboard/voices/'
+      path: '/'
+      fullPath: '/dashboard/voices/'
+      preLoaderRoute: typeof DashboardVoicesIndexRouteImport
+      parentRoute: typeof DashboardVoicesRouteRoute
+    }
+    '/dashboard/text-to-speech/': {
+      id: '/dashboard/text-to-speech/'
+      path: '/'
+      fullPath: '/dashboard/text-to-speech/'
+      preLoaderRoute: typeof DashboardTextToSpeechIndexRouteImport
+      parentRoute: typeof DashboardTextToSpeechRouteRoute
+    }
+    '/dashboard/text-to-speech/$generationId': {
+      id: '/dashboard/text-to-speech/$generationId'
+      path: '/$generationId'
+      fullPath: '/dashboard/text-to-speech/$generationId'
+      preLoaderRoute: typeof DashboardTextToSpeechGenerationIdRouteImport
+      parentRoute: typeof DashboardTextToSpeechRouteRoute
     }
     '/api/trpc/$': {
       id: '/api/trpc/$'
@@ -175,12 +246,54 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardTextToSpeechRouteRouteChildren {
+  DashboardTextToSpeechGenerationIdRoute: typeof DashboardTextToSpeechGenerationIdRoute
+  DashboardTextToSpeechIndexRoute: typeof DashboardTextToSpeechIndexRoute
+}
+
+const DashboardTextToSpeechRouteRouteChildren: DashboardTextToSpeechRouteRouteChildren =
+  {
+    DashboardTextToSpeechGenerationIdRoute:
+      DashboardTextToSpeechGenerationIdRoute,
+    DashboardTextToSpeechIndexRoute: DashboardTextToSpeechIndexRoute,
+  }
+
+const DashboardTextToSpeechRouteRouteWithChildren =
+  DashboardTextToSpeechRouteRoute._addFileChildren(
+    DashboardTextToSpeechRouteRouteChildren,
+  )
+
+interface DashboardVoicesRouteRouteChildren {
+  DashboardVoicesIndexRoute: typeof DashboardVoicesIndexRoute
+}
+
+const DashboardVoicesRouteRouteChildren: DashboardVoicesRouteRouteChildren = {
+  DashboardVoicesIndexRoute: DashboardVoicesIndexRoute,
+}
+
+const DashboardVoicesRouteRouteWithChildren =
+  DashboardVoicesRouteRoute._addFileChildren(DashboardVoicesRouteRouteChildren)
+
+interface DashboardRouteChildren {
+  DashboardTextToSpeechRouteRoute: typeof DashboardTextToSpeechRouteRouteWithChildren
+  DashboardVoicesRouteRoute: typeof DashboardVoicesRouteRouteWithChildren
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardTextToSpeechRouteRoute: DashboardTextToSpeechRouteRouteWithChildren,
+  DashboardVoicesRouteRoute: DashboardVoicesRouteRouteWithChildren,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   LoginRoute: LoginRoute,
   SuccessRoute: SuccessRoute,
-  TodosRoute: TodosRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,
 }

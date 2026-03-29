@@ -8,7 +8,6 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "**",
       "!**/.next",
       "!**/dist",
       "!**/.turbo",
@@ -27,6 +26,7 @@
       "!**/wrangler.jsonc",
       "!**/.source",
       "!**/convex/_generated",
+      "!**/packages/ui/src/components",
       "!**/packages/resonance"
     ]
   },
@@ -46,7 +46,11 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "useExhaustiveDependencies": "info"
+        "useExhaustiveDependencies": "warn"
+      },
+      "suspicious": {
+        "noConsole": "off",
+        "noDocumentCookie": "off"
       },
       "nursery": {
         "useSortedClasses": {
@@ -67,7 +71,13 @@
         "noUnusedTemplateLiteral": "error",
         "useNumberNamespace": "error",
         "noInferrableTypes": "error",
-        "noUselessElse": "error"
+        "noUselessElse": "error",
+        "useConsistentTypeDefinitions": {
+          "level": "error",
+          "options": {
+            "style": "type"
+          }
+        }
       }
     }
   },

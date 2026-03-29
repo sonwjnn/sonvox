@@ -5,6 +5,9 @@
     ".": {
       "default": "./src/index.ts"
     },
+    "./client": {
+      "default": "./prisma/generated/client/index.js"
+    },
     "./*": {
       "default": "./src/*.ts"
     }
@@ -14,7 +17,8 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "postinstall": "prisma generate",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "seed:voices": "bun scripts/seed-system-voices.ts"
   },
   "dependencies": {
     "@sonvox/env": "workspace:*",
@@ -26,8 +30,10 @@
   },
   "devDependencies": {
     "@sonvox/config": "workspace:*",
+    "@aws-sdk/client-s3": "^3.800.0",
     "@types/pg": "^8.16.0",
     "prisma": "^7.2.0",
+    "tsx": "^4.19.0",
     "typescript": "^5"
   }
 }
