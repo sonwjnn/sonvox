@@ -10,8 +10,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
-
-import Header from "../components/header";
+import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 
 import appCss from "../index.css?url";
 export type RouterAppContext = {
@@ -46,15 +45,14 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 
 function RootDocument() {
 	return (
-		<html className="dark" lang="en">
+		<html lang="en" className="light">
 			<head>
 				<HeadContent />
 			</head>
 			<body>
-				<div className="grid h-svh grid-rows-[auto_1fr]">
-					<Header />
+				<NuqsAdapter>
 					<Outlet />
-				</div>
+				</NuqsAdapter>
 				<Toaster richColors />
 				<TanStackRouterDevtools position="bottom-left" />
 				<ReactQueryDevtools buttonPosition="bottom-right" position="bottom" />

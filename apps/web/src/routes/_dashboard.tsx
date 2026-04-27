@@ -2,20 +2,23 @@ import { SidebarInset, SidebarProvider } from "@sonvox/ui/components/sidebar";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { DashboardSidebar } from "@/features/dashboard/components/dashboard-sidebar";
-import { getPayment } from "@/functions/get-payment";
 import { getUser } from "@/functions/get-user";
 
-export const Route = createFileRoute("/dashboard")({
+export const Route = createFileRoute("/_dashboard")({
 	component: DashboardLayout,
 	beforeLoad: async () => {
 		const session = await getUser();
-		const customerState = await getPayment();
-		return { session, customerState };
+		return { session };
 	},
 	loader: async ({ context }) => {
 		if (!context.session) {
-			throw redirect({
+			throw await redirect({
 				to: "/login",
+			});
+		}
+		if (!context.session.session.activeOrganizationId) {
+			throw await redirect({
+				to: "/org-selection",
 			});
 		}
 	},

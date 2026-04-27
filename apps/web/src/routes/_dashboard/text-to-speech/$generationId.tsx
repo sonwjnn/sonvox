@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { TextToSpeechDetailView } from "@/features/text-to-speech/views/text-to-speech-detail-view";
 
-export const Route = createFileRoute("/dashboard/text-to-speech/$generationId")(
+export const Route = createFileRoute("/_dashboard/text-to-speech/$generationId")(
 	{
 		component: TextToSpeechDetailRoute,
 	}

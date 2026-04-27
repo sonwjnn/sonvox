@@ -34,12 +34,11 @@ export const auth = betterAuth({
 				checkout({
 					products: [
 						{
-							productId: "your-product-id",
+							productId: env.POLAR_PRODUCT_ID,
 							slug: "pro",
 						},
 					],
-					// successUrl: env.POLAR_SUCCESS_URL,
-					successUrl: "http://localhost:3001/success?checkout_id={CHECKOUT_ID}",
+					successUrl: env.POLAR_SUCCESS_URL,
 					authenticatedUsersOnly: true,
 				}),
 				portal(),

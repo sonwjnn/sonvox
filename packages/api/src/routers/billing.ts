@@ -7,8 +7,7 @@ import { polar } from "../lib/polar";
 export const billingRouter = router({
 	createCheckout: orgProcedure.mutation(async ({ ctx }) => {
 		const result = await polar.checkouts.create({
-			// products: [env.POLAR_PRODUCT_ID],
-			products: ["prod_01J3284512117600000000"],
+			products: [env.POLAR_PRODUCT_ID],
 			externalCustomerId: ctx.orgId,
 			successUrl: env.BETTER_AUTH_URL,
 		});

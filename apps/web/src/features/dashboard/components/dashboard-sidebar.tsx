@@ -44,8 +44,8 @@ function getIsActive(item: MenuItem, pathname: string): boolean {
 	if (!item.url) {
 		return false;
 	}
-	if (item.url === "/dashboard") {
-		return pathname === "/dashboard";
+	if (item.url === "/") {
+		return pathname === "/";
 	}
 	return pathname.startsWith(item.url);
 }
@@ -96,17 +96,17 @@ export function DashboardSidebar() {
 	const mainMenuItems: MenuItem[] = [
 		{
 			title: "Dashboard",
-			url: "/dashboard",
+			url: "/",
 			icon: Home,
 		},
 		{
 			title: "Explore voices",
-			url: "/dashboard/voices",
+			url: "/voices",
 			icon: LayoutGrid,
 		},
 		{
 			title: "Text to speech",
-			url: "/dashboard/text-to-speech",
+			url: "/text-to-speech",
 			icon: AudioLines,
 		},
 		{
@@ -120,7 +120,7 @@ export function DashboardSidebar() {
 		{
 			title: "Settings",
 			icon: Settings,
-			url: "/dashboard/settings",
+			url: "/settings",
 		},
 		{
 			title: "Help and support",

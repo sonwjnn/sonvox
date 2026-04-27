@@ -20,7 +20,7 @@ export function TextInputPanel() {
 			return;
 		}
 
-		navigate({ to: "/dashboard/text-to-speech", search: { text: trimmed } });
+		navigate({ to: "/text-to-speech", search: { text: trimmed } });
 	};
 
 	return (

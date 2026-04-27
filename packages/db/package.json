@@ -21,11 +21,11 @@
     "seed:voices": "bun scripts/seed-system-voices.ts"
   },
   "dependencies": {
-    "@sonvox/env": "workspace:*",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "catalog:",
-    "dotenv": "catalog:",
+    "@sonvox/env": "workspace:*",
     "pg": "^8.17.1",
+    "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

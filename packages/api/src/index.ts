@@ -27,6 +27,8 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
 export const orgProcedure = protectedProcedure.use(({ ctx, next }) => {
 	const orgId = ctx.session.session.activeOrganizationId;
 
+	console.log("session:", JSON.stringify(ctx.session, null, 2)); // ← debug
+
 	if (!orgId) {
 		throw new TRPCError({
 			code: "FORBIDDEN",

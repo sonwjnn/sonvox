@@ -65,7 +65,7 @@ export function TextToSpeechForm({
 
 				toast.success("Audio generated successfully!");
 				navigate({
-					to: "/dashboard/text-to-speech/$generationId",
+					to: "/text-to-speech/$generationId",
 					params: { generationId: data.id },
 				});
 			} catch (error) {

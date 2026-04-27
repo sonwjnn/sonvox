@@ -124,7 +124,7 @@ export function VoiceCard({ voice }: VoiceCardProps) {
 					<DropdownMenuContent align="end">
 						<DropdownMenuItem
 							onClick={() => {
-								window.location.href = `/dashboard/text-to-speech?voiceId=${voice.id}`;
+								window.location.href = `/text-to-speech?voiceId=${voice.id}`;
 							}}
 						>
 							<Mic className="size-4 text-foreground" />

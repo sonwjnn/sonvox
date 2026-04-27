@@ -45,7 +45,7 @@ export function SettingsPanelHistory() {
 					className="flex items-center gap-3 rounded-lg p-3 text-left transition-colors hover:bg-muted"
 					key={generation.id}
 					params={{ generationId: generation.id }}
-					to="/dashboard/text-to-speech/$generationId"
+					to="/text-to-speech/$generationId"
 				>
 					<div className="flex min-w-0 flex-1 flex-col gap-0.5">
 						<p className="truncate font-medium text-foreground text-sm">

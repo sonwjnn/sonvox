@@ -2,7 +2,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 import { VoicesLayout } from "@/features/voices/views/voices-layout";
 
-export const Route = createFileRoute("/dashboard/voices")({
+export const Route = createFileRoute("/_dashboard/voices")({
 	component: VoicesRouteLayout,
 });
 
@@ -11,5 +11,5 @@ function VoicesRouteLayout() {
 		<VoicesLayout>
 			<Outlet />
 		</VoicesLayout>
-	);
+	)
 }
