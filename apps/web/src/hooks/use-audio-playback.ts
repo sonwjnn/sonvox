@@ -20,6 +20,8 @@ export function useAudioPlayback(src: string | File | null) {
 			return;
 		}
 
+		console.log("src", src);
+
 		if (!audioRef.current) {
 			const url = src instanceof File ? URL.createObjectURL(src) : src;
 			audioRef.current = new Audio(url);
