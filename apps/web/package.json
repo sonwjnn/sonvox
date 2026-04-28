@@ -8,12 +8,13 @@
     "dev:bare": "vite dev"
   },
   "dependencies": {
+    "@polar-sh/better-auth": "catalog:",
+    "@prisma/client": "catalog:",
+    "@sentry/tanstackstart-react": "^10.50.0",
     "@sonvox/api": "workspace:*",
     "@sonvox/auth": "workspace:*",
     "@sonvox/env": "workspace:*",
     "@sonvox/ui": "workspace:*",
-    "@polar-sh/better-auth": "catalog:",
-    "@prisma/client": "catalog:",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-form": "^1.28.0",
     "@tanstack/react-query": "^5.80.6",

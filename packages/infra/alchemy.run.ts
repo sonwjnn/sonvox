@@ -28,6 +28,8 @@ export const web = await TanStackStart("web", {
 		// Chatterbox TTS
 		CHATTERBOX_API_URL: alchemy.env.CHATTERBOX_API_URL!,
 		CHATTERBOX_API_KEY: alchemy.secret.env.CHATTERBOX_API_KEY!,
+		// Sentry
+		SENTRY_DSN: alchemy.env.SENTRY_DSN!,
 	},
 });
 

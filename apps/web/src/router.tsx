@@ -1,5 +1,8 @@
+// biome-ignore lint/performance/noNamespaceImport: <>
+import * as Sentry from "@sentry/tanstackstart-react";
 import type { AppRouter } from "@sonvox/api/routers/index";
 import {
+	MutationCache,
 	QueryCache,
 	QueryClient,
 	QueryClientProvider,
@@ -18,11 +21,27 @@ import { getHeaders, TRPCProvider } from "./utils/trpc";
 export const queryClient = new QueryClient({
 	queryCache: new QueryCache({
 		onError: (error, query) => {
+			Sentry.withScope((scope) => {
+				scope.setFingerprint([query.queryHash.replace(/\d+/g, "")]);
+				scope.setExtra("queryKey", query.queryKey);
+				scope.setTag("queryType", "query");
+				Sentry.captureException(error);
+			});
 			toast.error(error.message, {
 				action: {
 					label: "retry",
 					onClick: query.invalidate,
 				},
+			});
+		},
+	}),
+	mutationCache: new MutationCache({
+		onError: (error, _variables, _context, mutation) => {
+			Sentry.withScope((scope) => {
+				scope.setFingerprint([String(mutation.options.mutationKey)]);
+				scope.setExtra("variables", mutation.state.variables);
+				scope.setTag("queryType", "mutation");
+				Sentry.captureException(error);
 			});
 		},
 	}),
@@ -34,8 +53,8 @@ const trpcClient = createTRPCClient<AppRouter>({
 		httpBatchLink({
 			url:
 				typeof window === "undefined"
-					? `${process.env.APP_URL}/api/trpc` // SSR: must be absolute
-					: "/api/trpc", // Client: relative is fine
+					? `${process.env.APP_URL}/api/trpc`
+					: "/api/trpc",
 
 			async headers() {
 				return await getHeaders();
@@ -71,6 +90,20 @@ export const getRouter = () => {
 			</QueryClientProvider>
 		),
 	});
+
+	if (!router.isServer) {
+		Sentry.init({
+			dsn: import.meta.env.VITE_SENTRY_DSN,
+			integrations: [
+				Sentry.tanstackRouterBrowserTracingIntegration(router),
+				Sentry.replayIntegration(),
+			],
+			tracesSampleRate: 1.0,
+			replaysSessionSampleRate: 0.1,
+			replaysOnErrorSampleRate: 1.0,
+		});
+	}
+
 	return router;
 };
 
