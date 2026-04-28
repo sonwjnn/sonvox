@@ -9,7 +9,7 @@ export const billingRouter = router({
 		const result = await polar.checkouts.create({
 			products: [env.POLAR_PRODUCT_ID],
 			externalCustomerId: ctx.orgId,
-			successUrl: env.BETTER_AUTH_URL,
+			successUrl: env.APP_URL,
 		});
 
 		if (!result.url) {

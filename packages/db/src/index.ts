@@ -1,13 +1,10 @@
-import { PrismaPg } from "@prisma/adapter-pg";
+import { withAccelerate } from "@prisma/extension-accelerate";
 import { env } from "@sonvox/env/server";
-
 import { PrismaClient } from "../prisma/generated/client";
 
-const adapter = new PrismaPg({
-	connectionString: env.DATABASE_URL,
-});
-
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient({
+	accelerateUrl: env.DATABASE_URL,
+}).$extends(withAccelerate());
 
 export default prisma;
 

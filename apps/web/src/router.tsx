@@ -7,13 +7,13 @@ import {
 
 import "./index.css";
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
+
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { toast } from "sonner";
-
 import Loader from "./components/loader";
 import { routeTree } from "./routeTree.gen";
-import { TRPCProvider } from "./utils/trpc";
+import { getHeaders, TRPCProvider } from "./utils/trpc";
 
 export const queryClient = new QueryClient({
 	queryCache: new QueryCache({
@@ -32,7 +32,14 @@ export const queryClient = new QueryClient({
 const trpcClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchLink({
-			url: "/api/trpc",
+			url:
+				typeof window === "undefined"
+					? `${process.env.APP_URL}/api/trpc` // SSR: must be absolute
+					: "/api/trpc", // Client: relative is fine
+
+			async headers() {
+				return await getHeaders();
+			},
 			fetch(url, options) {
 				return fetch(url, {
 					...options,

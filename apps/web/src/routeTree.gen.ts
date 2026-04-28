@@ -18,6 +18,7 @@ import { Route as DashboardVoicesRouteRouteImport } from './routes/_dashboard/vo
 import { Route as DashboardTextToSpeechRouteRouteImport } from './routes/_dashboard/text-to-speech/route'
 import { Route as DashboardVoicesIndexRouteImport } from './routes/_dashboard/voices/index'
 import { Route as DashboardTextToSpeechIndexRouteImport } from './routes/_dashboard/text-to-speech/index'
+import { Route as ApiVoicesSplatRouteImport } from './routes/api/voices/$'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api/trpc/$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as DashboardTextToSpeechGenerationIdRouteImport } from './routes/_dashboard/text-to-speech/$generationId'
@@ -68,6 +69,11 @@ const DashboardTextToSpeechIndexRoute =
     path: '/',
     getParentRoute: () => DashboardTextToSpeechRouteRoute,
   } as any)
+const ApiVoicesSplatRoute = ApiVoicesSplatRouteImport.update({
+  id: '/api/voices/$',
+  path: '/api/voices/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTrpcSplatRoute = ApiTrpcSplatRouteImport.update({
   id: '/api/trpc/$',
   path: '/api/trpc/$',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/api/voices/$': typeof ApiVoicesSplatRoute
   '/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
   '/voices/': typeof DashboardVoicesIndexRoute
 }
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/api/voices/$': typeof ApiVoicesSplatRoute
   '/text-to-speech': typeof DashboardTextToSpeechIndexRoute
   '/voices': typeof DashboardVoicesIndexRoute
 }
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/_dashboard/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/api/voices/$': typeof ApiVoicesSplatRoute
   '/_dashboard/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
   '/_dashboard/voices/': typeof DashboardVoicesIndexRoute
 }
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/api/voices/$'
     | '/text-to-speech/'
     | '/voices/'
   fileRoutesByTo: FileRoutesByTo
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/api/voices/$'
     | '/text-to-speech'
     | '/voices'
   id:
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/_dashboard/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/api/voices/$'
     | '/_dashboard/text-to-speech/'
     | '/_dashboard/voices/'
   fileRoutesById: FileRoutesById
@@ -172,6 +184,7 @@ export interface RootRouteChildren {
   SuccessRoute: typeof SuccessRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
+  ApiVoicesSplatRoute: typeof ApiVoicesSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/text-to-speech/'
       preLoaderRoute: typeof DashboardTextToSpeechIndexRouteImport
       parentRoute: typeof DashboardTextToSpeechRouteRoute
+    }
+    '/api/voices/$': {
+      id: '/api/voices/$'
+      path: '/api/voices/$'
+      fullPath: '/api/voices/$'
+      preLoaderRoute: typeof ApiVoicesSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/trpc/$': {
       id: '/api/trpc/$'
@@ -314,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   SuccessRoute: SuccessRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,
+  ApiVoicesSplatRoute: ApiVoicesSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

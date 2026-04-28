@@ -12,7 +12,6 @@ import {
 	SidebarRail,
 	SidebarTrigger,
 } from "@sonvox/ui/components/sidebar";
-import { Skeleton } from "@sonvox/ui/components/skeleton";
 import { Link, useLocation } from "@tanstack/react-router";
 import {
 	AudioLines,
@@ -24,7 +23,9 @@ import {
 	Volume2,
 } from "lucide-react";
 import { useState } from "react";
+import UserMenu from "@/components/user-menu";
 import { UsageContainer } from "@/features/billing/components/usage-container";
+import { OrganizationSwitcher } from "@/features/dashboard/components/organization-switcher";
 import { VoiceCreateDialog } from "@/features/voices/components/voice-create-dialog";
 
 type MenuItem = {
@@ -150,12 +151,7 @@ export function DashboardSidebar() {
 						</span>
 						<SidebarTrigger className="ml-auto lg:hidden" />
 					</div>
-					<SidebarMenu>
-						<SidebarMenuItem>
-							{/* TODO: Replace with app organization switcher */}
-							<Skeleton className="h-8.5 w-full rounded-md border bg-white group-data-[collapsible=icon]:size-8" />
-						</SidebarMenuItem>
-					</SidebarMenu>
+					<OrganizationSwitcher />
 				</SidebarHeader>
 				<div className="border-border border-b border-dashed" />
 				<SidebarContent>
@@ -169,12 +165,7 @@ export function DashboardSidebar() {
 				<div className="border-border border-b border-dashed" />
 				<SidebarFooter className="gap-3 py-3">
 					<UsageContainer />
-					<SidebarMenu>
-						<SidebarMenuItem>
-							{/* TODO: Replace with app user button */}
-							<Skeleton className="h-8.5 w-full rounded-md border border-border bg-white group-data-[collapsible=icon]:size-8" />
-						</SidebarMenuItem>
-					</SidebarMenu>
+					<UserMenu />
 				</SidebarFooter>
 				<SidebarRail />
 			</Sidebar>

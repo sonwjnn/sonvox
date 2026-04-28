@@ -23,9 +23,10 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "catalog:",
+    "@prisma/extension-accelerate": "^3.0.1",
     "@sonvox/env": "workspace:*",
-    "pg": "^8.17.1",
     "dotenv": "catalog:",
+    "pg": "^8.17.1",
     "zod": "catalog:"
   },
   "devDependencies": {
