@@ -23,7 +23,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 
-export const Route = createFileRoute("/org-selection")({
+export const Route = createFileRoute("/(org-setup)/org-selection/")({
 	component: OrgSelectionPage,
 });
 
@@ -35,16 +35,16 @@ function OrgSelectionPage() {
 	const handleSelectOrg = async (orgId: string) => {
 		await authClient.organization.setActive({
 			organizationId: orgId,
-		});
+		})
 		navigate({ to: "/" });
-	};
+	}
 
 	if (isPending) {
 		return (
 			<div className="flex min-h-screen items-center justify-center">
 				<Loader2 className="size-6 animate-spin text-muted-foreground" />
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -92,7 +92,7 @@ function OrgSelectionPage() {
 				</CardContent>
 			</Card>
 		</div>
-	);
+	)
 }
 
 function CreateOrgDialog({
@@ -117,7 +117,7 @@ function CreateOrgDialog({
 
 	const handleCreate = async () => {
 		if (!name.trim()) {
-			return;
+			return
 		}
 
 		setIsCreating(true);
@@ -129,18 +129,18 @@ function CreateOrgDialog({
 			const result = await authClient.organization.create({
 				name: name.trim(),
 				slug: orgSlug,
-			});
+			})
 
 			if (result.error) {
 				toast.error(result.error.message ?? "Failed to create organization");
-				return;
+				return
 			}
 
 			if (result.data?.id) {
 				toast.success("Organization created");
 				setOpen(false);
-				setName("");
-				setSlug("");
+				setName("")
+				setSlug("")
 				onSuccess(result.data.id);
 			}
 		} catch {
@@ -148,7 +148,7 @@ function CreateOrgDialog({
 		} finally {
 			setIsCreating(false);
 		}
-	};
+	}
 
 	return (
 		<Dialog onOpenChange={setOpen} open={open}>
@@ -199,5 +199,5 @@ function CreateOrgDialog({
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
-	);
+	)
 }

@@ -8,16 +8,14 @@ import z from "zod";
 
 import { authClient } from "@/lib/auth-client";
 
-import Loader from "./loader";
+import Loader from "../../../components/loader";
 
 export default function SignInForm({
 	onSwitchToSignUp,
 }: {
 	onSwitchToSignUp: () => void;
 }) {
-	const navigate = useNavigate({
-		from: "/",
-	});
+	const navigate = useNavigate();
 	const { isPending } = authClient.useSession();
 
 	const form = useForm({

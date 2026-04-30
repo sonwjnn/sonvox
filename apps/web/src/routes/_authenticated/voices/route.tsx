@@ -2,7 +2,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 import { VoicesLayout } from "@/features/voices/views/voices-layout";
 
-export const Route = createFileRoute("/_dashboard/voices")({
+export const Route = createFileRoute("/_authenticated/voices")({
 	component: VoicesRouteLayout,
 });
 

@@ -4,27 +4,29 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { DashboardSidebar } from "@/features/dashboard/components/dashboard-sidebar";
 import { getUser } from "@/functions/get-user";
 
-export const Route = createFileRoute("/_dashboard")({
-	component: DashboardLayout,
+export const Route = createFileRoute("/_authenticated")({
 	beforeLoad: async () => {
 		const session = await getUser();
 		return { session };
 	},
-	loader: async ({ context }) => {
+	loader: ({ context, location }) => {
 		if (!context.session) {
-			throw await redirect({
-				to: "/login",
+			throw redirect({
+				to: "/sign-in",
+				search: { redirect: location.href },
 			});
 		}
+
 		if (!context.session.session.activeOrganizationId) {
-			throw await redirect({
+			throw redirect({
 				to: "/org-selection",
 			});
 		}
 	},
+	component: AuthenticatedLayout,
 });
 
-function DashboardLayout() {
+function AuthenticatedLayout() {
 	return (
 		<SidebarProvider>
 			<DashboardSidebar />

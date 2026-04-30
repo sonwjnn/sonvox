@@ -45,7 +45,32 @@ export const queryClient = new QueryClient({
 			});
 		},
 	}),
-	defaultOptions: { queries: { staleTime: 60 * 1000 } },
+	defaultOptions: {
+		queries: {
+			staleTime: 60 * 1000,
+			retry: (failureCount, error) => {
+				if (import.meta.env.DEV) {
+					console.log({ failureCount, error });
+					return false;
+				}
+				if (failureCount > 3) {
+					return false;
+				}
+				const httpError = error as { response?: { status?: number } };
+				const status = httpError?.response?.status;
+				if (status === 401 || status === 403) {
+					return false;
+				}
+				return true;
+			},
+			refetchOnWindowFocus: import.meta.env.PROD,
+		},
+		mutations: {
+			onError: (error) => {
+				toast.error(error.message);
+			},
+		},
+	},
 });
 
 const trpcClient = createTRPCClient<AppRouter>({

@@ -11,6 +11,8 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
+import { DefaultCatchBoundaryView } from "@/features/errors/ui/views/default-catch-boundary-view";
+import { NotFoundErrorView } from "@/features/errors/ui/views/not-found-error-view";
 
 import appCss from "../index.css?url";
 export type RouterAppContext = {
@@ -39,7 +41,8 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 			},
 		],
 	}),
-
+	notFoundComponent: NotFoundErrorView,
+	errorComponent: DefaultCatchBoundaryView,
 	component: RootDocument,
 });
 

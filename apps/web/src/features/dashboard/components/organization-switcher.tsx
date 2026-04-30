@@ -47,7 +47,7 @@ export function OrganizationSwitcher() {
 		<SidebarMenu>
 			<SidebarMenuItem>
 				<DropdownMenu>
-					<DropdownMenuTrigger>
+					<DropdownMenuTrigger className="w-full">
 						<SidebarMenuButton
 							className="w-full items-center gap-3 rounded-md border border-border bg-white px-1.5 py-1 shadow-[0px_1px_1.5px_0px_rgba(44,54,53,0.03)] hover:bg-white group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-1"
 							size="lg"
@@ -66,16 +66,16 @@ export function OrganizationSwitcher() {
 					</DropdownMenuTrigger>
 					<DropdownMenuContent align="start" className="w-[--anchor-width]">
 						<DropdownMenuGroup>
-							<DropdownMenuLabel className="text-xs text-muted-foreground">
+							<DropdownMenuLabel className="text-muted-foreground text-xs">
 								Organizations
 							</DropdownMenuLabel>
 							{organizations?.map((org) => (
 								<DropdownMenuItem
+									className="flex items-center justify-between"
 									key={org.id}
 									onClick={() => {
 										handleSwitch(org.id);
 									}}
-									className="flex items-center justify-between"
 								>
 									<span className="truncate">{org.name}</span>
 									{switching === org.id ? (

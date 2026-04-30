@@ -10,64 +10,107 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuccessRouteImport } from './routes/success'
-import { Route as OrgSelectionRouteImport } from './routes/org-selection'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as DashboardRouteImport } from './routes/_dashboard'
-import { Route as DashboardIndexRouteImport } from './routes/_dashboard/index'
-import { Route as DashboardVoicesRouteRouteImport } from './routes/_dashboard/voices/route'
-import { Route as DashboardTextToSpeechRouteRouteImport } from './routes/_dashboard/text-to-speech/route'
-import { Route as DashboardVoicesIndexRouteImport } from './routes/_dashboard/voices/index'
-import { Route as DashboardTextToSpeechIndexRouteImport } from './routes/_dashboard/text-to-speech/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as orgSetupRouteRouteImport } from './routes/(org-setup)/route'
+import { Route as authRouteRouteImport } from './routes/(auth)/route'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as errors503RouteImport } from './routes/(errors)/503'
+import { Route as errors500RouteImport } from './routes/(errors)/500'
+import { Route as errors404RouteImport } from './routes/(errors)/404'
+import { Route as errors403RouteImport } from './routes/(errors)/403'
+import { Route as errors401RouteImport } from './routes/(errors)/401'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
+import { Route as AuthenticatedVoicesRouteRouteImport } from './routes/_authenticated/voices/route'
+import { Route as AuthenticatedTextToSpeechRouteRouteImport } from './routes/_authenticated/text-to-speech/route'
+import { Route as AuthenticatedVoicesIndexRouteImport } from './routes/_authenticated/voices/index'
+import { Route as AuthenticatedTextToSpeechIndexRouteImport } from './routes/_authenticated/text-to-speech/index'
+import { Route as orgSetupOrgSelectionIndexRouteImport } from './routes/(org-setup)/org-selection/index'
 import { Route as ApiVoicesSplatRouteImport } from './routes/api/voices/$'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api/trpc/$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
-import { Route as DashboardTextToSpeechGenerationIdRouteImport } from './routes/_dashboard/text-to-speech/$generationId'
+import { Route as AuthenticatedTextToSpeechGenerationIdRouteImport } from './routes/_authenticated/text-to-speech/$generationId'
 
 const SuccessRoute = SuccessRouteImport.update({
   id: '/success',
   path: '/success',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OrgSelectionRoute = OrgSelectionRouteImport.update({
-  id: '/org-selection',
-  path: '/org-selection',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const orgSetupRouteRoute = orgSetupRouteRouteImport.update({
+  id: '/(org-setup)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/_dashboard',
+const authRouteRoute = authRouteRouteImport.update({
+  id: '/(auth)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const DashboardVoicesRouteRoute = DashboardVoicesRouteRouteImport.update({
-  id: '/voices',
-  path: '/voices',
-  getParentRoute: () => DashboardRoute,
+const errors503Route = errors503RouteImport.update({
+  id: '/(errors)/503',
+  path: '/503',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardTextToSpeechRouteRoute =
-  DashboardTextToSpeechRouteRouteImport.update({
+const errors500Route = errors500RouteImport.update({
+  id: '/(errors)/500',
+  path: '/500',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const errors404Route = errors404RouteImport.update({
+  id: '/(errors)/404',
+  path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const errors403Route = errors403RouteImport.update({
+  id: '/(errors)/403',
+  path: '/403',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const errors401Route = errors401RouteImport.update({
+  id: '/(errors)/401',
+  path: '/401',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => authRouteRoute,
+} as any)
+const AuthenticatedVoicesRouteRoute =
+  AuthenticatedVoicesRouteRouteImport.update({
+    id: '/voices',
+    path: '/voices',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTextToSpeechRouteRoute =
+  AuthenticatedTextToSpeechRouteRouteImport.update({
     id: '/text-to-speech',
     path: '/text-to-speech',
-    getParentRoute: () => DashboardRoute,
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const DashboardVoicesIndexRoute = DashboardVoicesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DashboardVoicesRouteRoute,
-} as any)
-const DashboardTextToSpeechIndexRoute =
-  DashboardTextToSpeechIndexRouteImport.update({
+const AuthenticatedVoicesIndexRoute =
+  AuthenticatedVoicesIndexRouteImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => DashboardTextToSpeechRouteRoute,
+    getParentRoute: () => AuthenticatedVoicesRouteRoute,
+  } as any)
+const AuthenticatedTextToSpeechIndexRoute =
+  AuthenticatedTextToSpeechIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedTextToSpeechRouteRoute,
+  } as any)
+const orgSetupOrgSelectionIndexRoute =
+  orgSetupOrgSelectionIndexRouteImport.update({
+    id: '/org-selection/',
+    path: '/org-selection/',
+    getParentRoute: () => orgSetupRouteRoute,
   } as any)
 const ApiVoicesSplatRoute = ApiVoicesSplatRouteImport.update({
   id: '/api/voices/$',
@@ -84,104 +127,143 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardTextToSpeechGenerationIdRoute =
-  DashboardTextToSpeechGenerationIdRouteImport.update({
+const AuthenticatedTextToSpeechGenerationIdRoute =
+  AuthenticatedTextToSpeechGenerationIdRouteImport.update({
     id: '/$generationId',
     path: '/$generationId',
-    getParentRoute: () => DashboardTextToSpeechRouteRoute,
+    getParentRoute: () => AuthenticatedTextToSpeechRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof DashboardIndexRoute
-  '/login': typeof LoginRoute
-  '/org-selection': typeof OrgSelectionRoute
+  '/': typeof AuthenticatedIndexRoute
   '/success': typeof SuccessRoute
-  '/text-to-speech': typeof DashboardTextToSpeechRouteRouteWithChildren
-  '/voices': typeof DashboardVoicesRouteRouteWithChildren
-  '/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/text-to-speech': typeof AuthenticatedTextToSpeechRouteRouteWithChildren
+  '/voices': typeof AuthenticatedVoicesRouteRouteWithChildren
+  '/sign-in': typeof authSignInRoute
+  '/401': typeof errors401Route
+  '/403': typeof errors403Route
+  '/404': typeof errors404Route
+  '/500': typeof errors500Route
+  '/503': typeof errors503Route
+  '/text-to-speech/$generationId': typeof AuthenticatedTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/api/voices/$': typeof ApiVoicesSplatRoute
-  '/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
-  '/voices/': typeof DashboardVoicesIndexRoute
+  '/org-selection/': typeof orgSetupOrgSelectionIndexRoute
+  '/text-to-speech/': typeof AuthenticatedTextToSpeechIndexRoute
+  '/voices/': typeof AuthenticatedVoicesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/login': typeof LoginRoute
-  '/org-selection': typeof OrgSelectionRoute
   '/success': typeof SuccessRoute
-  '/': typeof DashboardIndexRoute
-  '/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/sign-in': typeof authSignInRoute
+  '/401': typeof errors401Route
+  '/403': typeof errors403Route
+  '/404': typeof errors404Route
+  '/500': typeof errors500Route
+  '/503': typeof errors503Route
+  '/': typeof AuthenticatedIndexRoute
+  '/text-to-speech/$generationId': typeof AuthenticatedTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/api/voices/$': typeof ApiVoicesSplatRoute
-  '/text-to-speech': typeof DashboardTextToSpeechIndexRoute
-  '/voices': typeof DashboardVoicesIndexRoute
+  '/org-selection': typeof orgSetupOrgSelectionIndexRoute
+  '/text-to-speech': typeof AuthenticatedTextToSpeechIndexRoute
+  '/voices': typeof AuthenticatedVoicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_dashboard': typeof DashboardRouteWithChildren
-  '/login': typeof LoginRoute
-  '/org-selection': typeof OrgSelectionRoute
+  '/(auth)': typeof authRouteRouteWithChildren
+  '/(org-setup)': typeof orgSetupRouteRouteWithChildren
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/success': typeof SuccessRoute
-  '/_dashboard/text-to-speech': typeof DashboardTextToSpeechRouteRouteWithChildren
-  '/_dashboard/voices': typeof DashboardVoicesRouteRouteWithChildren
-  '/_dashboard/': typeof DashboardIndexRoute
-  '/_dashboard/text-to-speech/$generationId': typeof DashboardTextToSpeechGenerationIdRoute
+  '/_authenticated/text-to-speech': typeof AuthenticatedTextToSpeechRouteRouteWithChildren
+  '/_authenticated/voices': typeof AuthenticatedVoicesRouteRouteWithChildren
+  '/(auth)/sign-in': typeof authSignInRoute
+  '/(errors)/401': typeof errors401Route
+  '/(errors)/403': typeof errors403Route
+  '/(errors)/404': typeof errors404Route
+  '/(errors)/500': typeof errors500Route
+  '/(errors)/503': typeof errors503Route
+  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/text-to-speech/$generationId': typeof AuthenticatedTextToSpeechGenerationIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
   '/api/voices/$': typeof ApiVoicesSplatRoute
-  '/_dashboard/text-to-speech/': typeof DashboardTextToSpeechIndexRoute
-  '/_dashboard/voices/': typeof DashboardVoicesIndexRoute
+  '/(org-setup)/org-selection/': typeof orgSetupOrgSelectionIndexRoute
+  '/_authenticated/text-to-speech/': typeof AuthenticatedTextToSpeechIndexRoute
+  '/_authenticated/voices/': typeof AuthenticatedVoicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/login'
-    | '/org-selection'
     | '/success'
     | '/text-to-speech'
     | '/voices'
+    | '/sign-in'
+    | '/401'
+    | '/403'
+    | '/404'
+    | '/500'
+    | '/503'
     | '/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/api/voices/$'
+    | '/org-selection/'
     | '/text-to-speech/'
     | '/voices/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/login'
-    | '/org-selection'
     | '/success'
+    | '/sign-in'
+    | '/401'
+    | '/403'
+    | '/404'
+    | '/500'
+    | '/503'
     | '/'
     | '/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/api/voices/$'
+    | '/org-selection'
     | '/text-to-speech'
     | '/voices'
   id:
     | '__root__'
-    | '/_dashboard'
-    | '/login'
-    | '/org-selection'
+    | '/(auth)'
+    | '/(org-setup)'
+    | '/_authenticated'
     | '/success'
-    | '/_dashboard/text-to-speech'
-    | '/_dashboard/voices'
-    | '/_dashboard/'
-    | '/_dashboard/text-to-speech/$generationId'
+    | '/_authenticated/text-to-speech'
+    | '/_authenticated/voices'
+    | '/(auth)/sign-in'
+    | '/(errors)/401'
+    | '/(errors)/403'
+    | '/(errors)/404'
+    | '/(errors)/500'
+    | '/(errors)/503'
+    | '/_authenticated/'
+    | '/_authenticated/text-to-speech/$generationId'
     | '/api/auth/$'
     | '/api/trpc/$'
     | '/api/voices/$'
-    | '/_dashboard/text-to-speech/'
-    | '/_dashboard/voices/'
+    | '/(org-setup)/org-selection/'
+    | '/_authenticated/text-to-speech/'
+    | '/_authenticated/voices/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  DashboardRoute: typeof DashboardRouteWithChildren
-  LoginRoute: typeof LoginRoute
-  OrgSelectionRoute: typeof OrgSelectionRoute
+  authRouteRoute: typeof authRouteRouteWithChildren
+  orgSetupRouteRoute: typeof orgSetupRouteRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SuccessRoute: typeof SuccessRoute
+  errors401Route: typeof errors401Route
+  errors403Route: typeof errors403Route
+  errors404Route: typeof errors404Route
+  errors500Route: typeof errors500Route
+  errors503Route: typeof errors503Route
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
   ApiVoicesSplatRoute: typeof ApiVoicesSplatRoute
@@ -196,61 +278,110 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/org-selection': {
-      id: '/org-selection'
-      path: '/org-selection'
-      fullPath: '/org-selection'
-      preLoaderRoute: typeof OrgSelectionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_dashboard': {
-      id: '/_dashboard'
+    '/_authenticated': {
+      id: '/_authenticated'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof DashboardRouteImport
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/': {
-      id: '/_dashboard/'
+    '/(org-setup)': {
+      id: '/(org-setup)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof orgSetupRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)': {
+      id: '/(auth)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/': {
+      id: '/_authenticated/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_dashboard/voices': {
-      id: '/_dashboard/voices'
+    '/(errors)/503': {
+      id: '/(errors)/503'
+      path: '/503'
+      fullPath: '/503'
+      preLoaderRoute: typeof errors503RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(errors)/500': {
+      id: '/(errors)/500'
+      path: '/500'
+      fullPath: '/500'
+      preLoaderRoute: typeof errors500RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(errors)/404': {
+      id: '/(errors)/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof errors404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(errors)/403': {
+      id: '/(errors)/403'
+      path: '/403'
+      fullPath: '/403'
+      preLoaderRoute: typeof errors403RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(errors)/401': {
+      id: '/(errors)/401'
+      path: '/401'
+      fullPath: '/401'
+      preLoaderRoute: typeof errors401RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInRouteImport
+      parentRoute: typeof authRouteRoute
+    }
+    '/_authenticated/voices': {
+      id: '/_authenticated/voices'
       path: '/voices'
       fullPath: '/voices'
-      preLoaderRoute: typeof DashboardVoicesRouteRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedVoicesRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_dashboard/text-to-speech': {
-      id: '/_dashboard/text-to-speech'
+    '/_authenticated/text-to-speech': {
+      id: '/_authenticated/text-to-speech'
       path: '/text-to-speech'
       fullPath: '/text-to-speech'
-      preLoaderRoute: typeof DashboardTextToSpeechRouteRouteImport
-      parentRoute: typeof DashboardRoute
+      preLoaderRoute: typeof AuthenticatedTextToSpeechRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_dashboard/voices/': {
-      id: '/_dashboard/voices/'
+    '/_authenticated/voices/': {
+      id: '/_authenticated/voices/'
       path: '/'
       fullPath: '/voices/'
-      preLoaderRoute: typeof DashboardVoicesIndexRouteImport
-      parentRoute: typeof DashboardVoicesRouteRoute
+      preLoaderRoute: typeof AuthenticatedVoicesIndexRouteImport
+      parentRoute: typeof AuthenticatedVoicesRouteRoute
     }
-    '/_dashboard/text-to-speech/': {
-      id: '/_dashboard/text-to-speech/'
+    '/_authenticated/text-to-speech/': {
+      id: '/_authenticated/text-to-speech/'
       path: '/'
       fullPath: '/text-to-speech/'
-      preLoaderRoute: typeof DashboardTextToSpeechIndexRouteImport
-      parentRoute: typeof DashboardTextToSpeechRouteRoute
+      preLoaderRoute: typeof AuthenticatedTextToSpeechIndexRouteImport
+      parentRoute: typeof AuthenticatedTextToSpeechRouteRoute
+    }
+    '/(org-setup)/org-selection/': {
+      id: '/(org-setup)/org-selection/'
+      path: '/org-selection'
+      fullPath: '/org-selection/'
+      preLoaderRoute: typeof orgSetupOrgSelectionIndexRouteImport
+      parentRoute: typeof orgSetupRouteRoute
     }
     '/api/voices/$': {
       id: '/api/voices/$'
@@ -273,65 +404,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/text-to-speech/$generationId': {
-      id: '/_dashboard/text-to-speech/$generationId'
+    '/_authenticated/text-to-speech/$generationId': {
+      id: '/_authenticated/text-to-speech/$generationId'
       path: '/$generationId'
       fullPath: '/text-to-speech/$generationId'
-      preLoaderRoute: typeof DashboardTextToSpeechGenerationIdRouteImport
-      parentRoute: typeof DashboardTextToSpeechRouteRoute
+      preLoaderRoute: typeof AuthenticatedTextToSpeechGenerationIdRouteImport
+      parentRoute: typeof AuthenticatedTextToSpeechRouteRoute
     }
   }
 }
 
-interface DashboardTextToSpeechRouteRouteChildren {
-  DashboardTextToSpeechGenerationIdRoute: typeof DashboardTextToSpeechGenerationIdRoute
-  DashboardTextToSpeechIndexRoute: typeof DashboardTextToSpeechIndexRoute
+interface authRouteRouteChildren {
+  authSignInRoute: typeof authSignInRoute
 }
 
-const DashboardTextToSpeechRouteRouteChildren: DashboardTextToSpeechRouteRouteChildren =
-  {
-    DashboardTextToSpeechGenerationIdRoute:
-      DashboardTextToSpeechGenerationIdRoute,
-    DashboardTextToSpeechIndexRoute: DashboardTextToSpeechIndexRoute,
-  }
-
-const DashboardTextToSpeechRouteRouteWithChildren =
-  DashboardTextToSpeechRouteRoute._addFileChildren(
-    DashboardTextToSpeechRouteRouteChildren,
-  )
-
-interface DashboardVoicesRouteRouteChildren {
-  DashboardVoicesIndexRoute: typeof DashboardVoicesIndexRoute
+const authRouteRouteChildren: authRouteRouteChildren = {
+  authSignInRoute: authSignInRoute,
 }
 
-const DashboardVoicesRouteRouteChildren: DashboardVoicesRouteRouteChildren = {
-  DashboardVoicesIndexRoute: DashboardVoicesIndexRoute,
-}
-
-const DashboardVoicesRouteRouteWithChildren =
-  DashboardVoicesRouteRoute._addFileChildren(DashboardVoicesRouteRouteChildren)
-
-interface DashboardRouteChildren {
-  DashboardTextToSpeechRouteRoute: typeof DashboardTextToSpeechRouteRouteWithChildren
-  DashboardVoicesRouteRoute: typeof DashboardVoicesRouteRouteWithChildren
-  DashboardIndexRoute: typeof DashboardIndexRoute
-}
-
-const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardTextToSpeechRouteRoute: DashboardTextToSpeechRouteRouteWithChildren,
-  DashboardVoicesRouteRoute: DashboardVoicesRouteRouteWithChildren,
-  DashboardIndexRoute: DashboardIndexRoute,
-}
-
-const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
-  DashboardRouteChildren,
+const authRouteRouteWithChildren = authRouteRoute._addFileChildren(
+  authRouteRouteChildren,
 )
 
+interface orgSetupRouteRouteChildren {
+  orgSetupOrgSelectionIndexRoute: typeof orgSetupOrgSelectionIndexRoute
+}
+
+const orgSetupRouteRouteChildren: orgSetupRouteRouteChildren = {
+  orgSetupOrgSelectionIndexRoute: orgSetupOrgSelectionIndexRoute,
+}
+
+const orgSetupRouteRouteWithChildren = orgSetupRouteRoute._addFileChildren(
+  orgSetupRouteRouteChildren,
+)
+
+interface AuthenticatedTextToSpeechRouteRouteChildren {
+  AuthenticatedTextToSpeechGenerationIdRoute: typeof AuthenticatedTextToSpeechGenerationIdRoute
+  AuthenticatedTextToSpeechIndexRoute: typeof AuthenticatedTextToSpeechIndexRoute
+}
+
+const AuthenticatedTextToSpeechRouteRouteChildren: AuthenticatedTextToSpeechRouteRouteChildren =
+  {
+    AuthenticatedTextToSpeechGenerationIdRoute:
+      AuthenticatedTextToSpeechGenerationIdRoute,
+    AuthenticatedTextToSpeechIndexRoute: AuthenticatedTextToSpeechIndexRoute,
+  }
+
+const AuthenticatedTextToSpeechRouteRouteWithChildren =
+  AuthenticatedTextToSpeechRouteRoute._addFileChildren(
+    AuthenticatedTextToSpeechRouteRouteChildren,
+  )
+
+interface AuthenticatedVoicesRouteRouteChildren {
+  AuthenticatedVoicesIndexRoute: typeof AuthenticatedVoicesIndexRoute
+}
+
+const AuthenticatedVoicesRouteRouteChildren: AuthenticatedVoicesRouteRouteChildren =
+  {
+    AuthenticatedVoicesIndexRoute: AuthenticatedVoicesIndexRoute,
+  }
+
+const AuthenticatedVoicesRouteRouteWithChildren =
+  AuthenticatedVoicesRouteRoute._addFileChildren(
+    AuthenticatedVoicesRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedTextToSpeechRouteRoute: typeof AuthenticatedTextToSpeechRouteRouteWithChildren
+  AuthenticatedVoicesRouteRoute: typeof AuthenticatedVoicesRouteRouteWithChildren
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedTextToSpeechRouteRoute:
+    AuthenticatedTextToSpeechRouteRouteWithChildren,
+  AuthenticatedVoicesRouteRoute: AuthenticatedVoicesRouteRouteWithChildren,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  DashboardRoute: DashboardRouteWithChildren,
-  LoginRoute: LoginRoute,
-  OrgSelectionRoute: OrgSelectionRoute,
+  authRouteRoute: authRouteRouteWithChildren,
+  orgSetupRouteRoute: orgSetupRouteRouteWithChildren,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SuccessRoute: SuccessRoute,
+  errors401Route: errors401Route,
+  errors403Route: errors403Route,
+  errors404Route: errors404Route,
+  errors500Route: errors500Route,
+  errors503Route: errors503Route,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,
   ApiVoicesSplatRoute: ApiVoicesSplatRoute,
